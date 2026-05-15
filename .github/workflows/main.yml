@@ -1,17 +1,31 @@
-name: RTOS Automated Test
+name: RTOS Build and Test
 on: [push]
 
 jobs:
-  wokwi-test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Build Firmware
+      
+        run: pio run
 
       - name: Run Wokwi Simulation
         uses: wokwi/wokwi-ci-action@v1
         with:
           token: ${{ secrets.WOKWI_CLI_TOKEN }}
           path: .
-          expect_text: '[LOG]' 
+         
+          bin: .pio/build/esp32dev/firmware.bin 
+          expect_text: '[LOG]'
           timeout: 30000
