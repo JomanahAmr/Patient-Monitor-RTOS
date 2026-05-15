@@ -1,0 +1,17 @@
+name: RTOS Automated Test
+on: [push]
+
+jobs:
+  wokwi-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Wokwi Simulation
+        uses: wokwi/wokwi-ci-action@v1
+        with:
+          token: ${{ secrets.WOKWI_CLI_TOKEN }}
+          path: .
+          expect_text: '[LOG]' 
+          timeout: 30000
