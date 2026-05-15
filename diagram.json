@@ -17,7 +17,8 @@
       "id": "chip1",
       "top": 231.42,
       "left": 302.4,
-      "attrs": {}
+      "attrs": {},
+      "src": "chips/max30102.chip.c"
     },
     {
       "type": "chip-lm35",
@@ -26,7 +27,8 @@
       "left": -150,
       "attrs": {
         "temperature": "36.7"
-      }
+      },
+      "src": "chips/lm35.chip.c"
     },
     {
       "type": "board-ssd1306",
@@ -68,29 +70,23 @@
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
     [ "esp:RX", "$serialMonitor:TX", "", [] ],
-
     [ "oled1:SDA", "esp:10", "blue", [] ],
     [ "oled1:SCL", "esp:11", "yellow", [] ],
     [ "oled1:GND", "esp:GND.2", "black", [] ],
     [ "oled1:VCC", "esp:3V3.2", "red", [] ],
-
     [ "lm35temp:VCC", "esp:3V3.2", "red", [] ],
     [ "lm35temp:GND", "esp:GND.2", "black", [] ],
     [ "lm35temp:OUT", "esp:4", "green", [] ],
-
     [ "chip1:SDA", "esp:20", "gray", [] ],
     [ "chip1:SCL", "esp:21", "white", [] ],
     [ "chip1:VCC", "esp:3V3.2", "red", [] ],
     [ "chip1:GND", "esp:GND.2", "black", [] ],
     [ "chip1:INT", "esp:5", "gold", [] ],
-
     [ "ntcRR:VCC", "esp:3V3.2", "red", [] ],
     [ "ntcRR:GND", "esp:GND.2", "black", [] ],
     [ "ntcRR:OUT", "esp:6", "purple", [] ],
-
     [ "touchBtn:1.l", "esp:7", "cyan", [] ],
     [ "touchBtn:2.l", "esp:GND.2", "black", [] ],
-
     [ "buzzer1:1", "esp:8", "orange", [] ],
     [ "buzzer1:2", "esp:GND.2", "black", [] ]
   ],
