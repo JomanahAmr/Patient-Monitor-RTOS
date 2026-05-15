@@ -15,4 +15,9 @@ jobs:
 
       - name: Build firmware
         run: pio run
-        
+
+      - name: Install Python test dependencies
+        run: pip install pyserial pytest
+
+      - name: Run Unit Tests
+        run: pytest tests/test_parsers.py -v
