@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "author": "abdullah ahmed",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": -0.18,
+      "left": 90.97,
+      "attrs": {
+        "flashSize": "8"
+      }
+    },
+    {
+      "type": "chip-max30102",
+      "id": "chip1",
+      "top": 231.42,
+      "left": 302.4,
+      "attrs": {}
+    },
+    {
+      "type": "chip-lm35",
+      "id": "lm35temp",
+      "top": -112,
+      "left": -150,
+      "attrs": {
+        "temperature": "36.7"
+      }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 118.34,
+      "left": 307.43,
+      "attrs": {
+        "i2cAddress": "0x3c"
+      }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntcRR",
+      "top": 12.2,
+      "left": -115.8,
+      "attrs": {
+        "temperature": "36",
+        "beta": "3950"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "touchBtn",
+      "top": 140.6,
+      "left": -96,
+      "attrs": {
+        "color": "blue",
+        "label": "TTP223"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 238,
+      "left": -80,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "oled1:SDA", "esp:10", "blue", [] ],
+    [ "oled1:SCL", "esp:11", "yellow", [] ],
+    [ "oled1:GND", "esp:GND.2", "black", [] ],
+    [ "oled1:VCC", "esp:3V3.2", "red", [] ],
+
+    [ "lm35temp:VCC", "esp:3V3.2", "red", [] ],
+    [ "lm35temp:GND", "esp:GND.2", "black", [] ],
+    [ "lm35temp:OUT", "esp:4", "green", [] ],
+
+    [ "chip1:SDA", "esp:20", "gray", [] ],
+    [ "chip1:SCL", "esp:21", "white", [] ],
+    [ "chip1:VCC", "esp:3V3.2", "red", [] ],
+    [ "chip1:GND", "esp:GND.2", "black", [] ],
+    [ "chip1:INT", "esp:5", "gold", [] ],
+
+    [ "ntcRR:VCC", "esp:3V3.2", "red", [] ],
+    [ "ntcRR:GND", "esp:GND.2", "black", [] ],
+    [ "ntcRR:OUT", "esp:6", "purple", [] ],
+
+    [ "touchBtn:1.l", "esp:7", "cyan", [] ],
+    [ "touchBtn:2.l", "esp:GND.2", "black", [] ],
+
+    [ "buzzer1:1", "esp:8", "orange", [] ],
+    [ "buzzer1:2", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
